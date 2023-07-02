@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Kamera;
 
+use App\Models\Kamera;
 use Illuminate\Http\Request;
+
 
 class KameraController extends Controller
 {
@@ -12,7 +13,8 @@ class KameraController extends Controller
      */
     public function index()
     {
-        $data = Kamera::all();
+        $data = Kamera::orderBy('id_kamera', 'asc')->paginate(5);
+        return view('kamera.index')->with('data',$data);
     }
 
     /**
@@ -20,7 +22,7 @@ class KameraController extends Controller
      */
     public function create()
     {
-    
+        return view('kamera.create');
     }
 
     /**
@@ -28,7 +30,28 @@ class KameraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_kamera'=>'required',
+            'nama_kamera'=>'required',
+            'keterangan'=>'required',
+            'harga_sewa'=>'required',
+            'stok_kamera'=>'required',
+            'type_kamera'=>'required',
+            'image_kamera'=>'image|mimes:jpeg,png,jpg|max:2048',
+
+        ]);
+
+        $data = [
+            'id_kamera'=>$request->input('id_kamera'),
+            'nama_kamera'=>$request->input('nama_kamera'),
+            'keterangan'=>$request->input('keterangan'),
+            'harga_sewa'=>$request->input('harga_sewa'),
+            'stok_kamera'=>$request->input('stok_kamera'),
+            'type_kamera'=>$request->input('type_kamera'),
+            'image_kamera'=>$request->input('image_kamera'),
+        ];
+        Kamera::create($data);
+        return redirect('/kamera');
     }
 
     /**

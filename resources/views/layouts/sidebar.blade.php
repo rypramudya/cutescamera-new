@@ -66,7 +66,7 @@
                                 <ul class="sidebar-nav" id="sidebar-nav">
                                     <li class="menu-title">Produk</li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="#">
+                                        <a class="nav-link " href="{{ route('kamera.index') }}">
                                             <i class="bi bi-table"></i>
                                             <span>Data Produk</span>
                                         </a>

@@ -46,8 +46,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/update-password', [AdminController::class, 'updaterPassword'])->name('update-password');
     });
 
-    Route::get('/create', [KameraController::class, 'create'])->name('crud.tambahproduk');
+    // Route::get('/dataproduk', [KameraController::class, 'index'])->name('kamera.index');
 
+    Route::resource('kamera',KameraController::class);
     // //untuk menampilkan form ubah password
     // Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');
     // Route::post('/change-password', [LoginController::class, 'updatePassword'])->name('update-password');
