@@ -10,9 +10,9 @@
 
 </head>
 
-<body style="background-image: url('{{ URL::asset('assets/img/HALAMAN LOGIN.png') }}'); background-size: cover; background-repeat: no-repeat;">
+<body style="background-image: url('{{ URL::asset('assets/img/loginpage.png') }}'); background-size: cover; background-repeat: no-repeat;">
+    
     <div class="container" id="body-login"><br>
-
         <div class="col-md-4 col-md-offset-0 " style="margin-top: 10%">
             <h2 class="text-center" style="color: white"><br><b>Selamat Datang</b></h3>
                 <br>
@@ -31,7 +31,15 @@
                     <label style="color: white">Password</label>
                     <input type="password" style="padding-top: 20px; padding-bottom: 20px; background-color: rgba(238, 238, 238, 0.5); border-color: white;" name="password" class="form-control"required="">
                 </div>
-                <p class="text-right"><a style="color: white" href="#">Lupa password?</a></p>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value=""
+                        id="rememberPasswordCheck">
+                        <label style="color: white"> Remember Password</label>
+                    {{-- <label class="form-check-label" for="rememberPasswordCheck">
+                        Remember password
+                    </label> --}}
+                </div>
+                {{-- <p class="text-right"><a style="color: white" href="#">Lupa password?</a></p> --}}
                 {{-- <a href="/dashboard"> --}}
                 <button type="submit" class="btn btn-lg btn-block" style="background-color: rgba(0, 0, 0, 0.5); color: white; border-radius: 12px;">Masuk</button>
                 <br>

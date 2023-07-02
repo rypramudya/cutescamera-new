@@ -29,8 +29,8 @@
                             <input type="password" class="form-control" name="password" id="password">
                         </div>
                         <div class="footer">
-                            <a href="{{ route('tampil-admin') }}" type="button" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary" id="add-btn">Submit</button>
+                            <a href="{{ route('tampil-admin') }}" type="button" class="btn btn-secondary">Batal</a>
+                            <button type="submit" class="btn btn-primary" id="add-btn">Simpan</button>
                         </div>
                     </form>
                 </div>
