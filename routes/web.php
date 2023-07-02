@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController; //memanggil file login controller
+use App\Http\Controllers\KameraController;
 
 //Route itu berfungsi untuk menjalankan file blade di browser
 
@@ -45,9 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/update-password', [AdminController::class, 'updaterPassword'])->name('update-password');
     });
 
-    Route::get('/tambahproduk', function () {
-        return view('crud.tambahproduk');
-    });
+    Route::get('/create', [KameraController::class, 'create'])->name('crud.tambahproduk');
 
     // //untuk menampilkan form ubah password
     // Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');
