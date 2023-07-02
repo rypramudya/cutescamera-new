@@ -2,10 +2,10 @@
 
 @section('content')
     <nav>
-        <h4>Edit Profile</h4>
+        <h4>Ubah Password</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Edit Profile</li>
+            <li class="breadcrumb-item active">Ubah Password</li>
         </ol>
     </nav>
 
