@@ -101,8 +101,9 @@ class KameraController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kamera $id)
+    public function destroy($id)
     {
-      
+      Kamera::where('id_kamera', $id)->delete();
+      return redirect('/kamera')->with('success', 'Berhasil hapus data');
     }
 }

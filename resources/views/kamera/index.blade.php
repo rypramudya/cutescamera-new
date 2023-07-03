@@ -57,7 +57,12 @@
                       <td>{{ $item->type_kamera }}</td>
                       <td>
                         <a class= "btn btn-primary btn-sm" href="{{ route('kamera.edit', [$item->id_kamera], '/edit') }}">Edit</a>
-                        <a class= "btn btn-danger btn-sm" href="">Delete</a>
+                        <form action="{{ route('kamera.destroy', $item->id_kamera) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                        </form>
+                        
                       </td>
                     </tr>
                   @empty
