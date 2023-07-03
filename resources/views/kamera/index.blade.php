@@ -56,8 +56,8 @@
                       <td>{{ $item->stok_kamera }}</td>
                       <td>{{ $item->type_kamera }}</td>
                       <td>
-                        <a class= "btn btn-primary" href="">Update</a>
-                        <a class= "btn btn-danger" href="">Delete</a>
+                        <a class= "btn btn-primary btn-sm" href="{{ route('kamera.edit', [$item->id_kamera], '/edit') }}">Edit</a>
+                        <a class= "btn btn-danger btn-sm" href="">Delete</a>
                       </td>
                     </tr>
                   @empty

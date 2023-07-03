@@ -65,9 +65,10 @@ class KameraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $data = Kamera::where('id_kamera', '=', $id)->get()->first();
+        return view('kamera.edit')->with('data', $data);
     }
 
     /**
@@ -75,14 +76,33 @@ class KameraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+        
+            'nama_kamera'=>'required',
+            'keterangan'=>'required',
+            'harga_sewa'=>'required',
+            'stok_kamera'=>'required',
+            'type_kamera'=>'required',
+            // 'image_kamera'=>'image|mimes:jpeg,png,jpg|max:2048',
+
+        ]);
+
+        $data = [
+            'nama_kamera' => $request -> input('nama_kamera'),
+            'keterangan' => $request -> input('keterangan'),
+            'harga_sewa' => $request -> input('harga_sewa'),
+            'stok_kamera' => $request -> input('stok_kamera'),
+            'type_kamera' => $request -> input('type_kamera'),
+        ];
+        Kamera::where('id_kamera', $id)->update($data);
+        return redirect('/kamera')->with('success','Berhasil Update data');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Kamera $id)
     {
-        //
+      
     }
 }
