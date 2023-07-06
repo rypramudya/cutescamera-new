@@ -45,6 +45,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  
                   @forelse ($data as $item)
                     <tr>
 
