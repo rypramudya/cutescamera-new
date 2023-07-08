@@ -11,7 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tabel_detail_peminjaman', function (Blueprint $table) {
-            $table->string('id_pinjam');
+            // $table->string('id_pinjam');
+            $table->foreign('id_pinjam')->references('id_pinjam')->on('tabel_peminjaman');
             $table->string('type_kamera');
             $table->string('jam_ambil');
             $table->string('lama_sewa');
