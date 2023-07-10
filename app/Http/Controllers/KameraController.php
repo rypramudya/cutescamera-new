@@ -14,7 +14,7 @@ class KameraController extends Controller
      */
     public function index()
     {
-        $data = Kamera::orderBy('id_kamera', 'asc')->paginate(5);
+        $data = Kamera::orderBy('id_kamera', 'asc')->paginate(10);
         return view('kamera.index')->with('data',$data);
     }
 

@@ -1,7 +1,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center bg-white">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="landing" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
             <img src="assets/img/logocutesbaru.png" alt="">
             {{-- <span class="d-none d-lg-block"Cutes Camerab</span> --}}
         </a>
