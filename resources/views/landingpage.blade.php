@@ -25,7 +25,7 @@
                     <a class="navbar-brand fw-bold" href="#page-top" i>
                         <img src="assets/img/cuteslogo.png" width="400" alt="">
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data/landing-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
                         <i class="bi-list"></i>
                     </button>
@@ -80,6 +80,7 @@
             </header>
             <!-- Quote/testimonial aside-->
             <aside class="text-center">
+                <h1>Kategori Barang</h1>
                 <div class="container px-5">
                     <div class="row gx-5 justify-content-center">
                         <div class="col-xl-8">
@@ -90,21 +91,41 @@
                 </div>
             </aside>
             <!-- App features section-->
-        <section class="bg-light">
-
-            <div class="container">
-              <div class="row justify-content-center">
-                  <div class="col-md-4">
-                      <div class="card" style="width: 18rem;">
-                          <img class="card-img-top" src="..." alt="Card image cap">
-                          <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                  </div>
-              </div>
-        </section>
+            
+            <section class="py-5">
+                <h1 class="text-center">Disarankan Untukmu</h1>
+                <div class="container px-4 px-lg-5 mt-5">
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        @foreach ($data as $item)
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Product image-->
+                                <img style="width:205px;height:205px;margin-left:auto;margin-right:auto; class="card-img-top" src="{{ url('image_kamera').'/'.$item->image_kamera }}" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">{{ $item->nama_kamera }}</h5>
+                                        <!-- Product price-->
+                                        Rp.{{ $item->harga_sewa }}/jam
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <a class="btn btn-primary rounded-pill  mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombollogin">
+                                            <span class="d-flex align-items-center">
+                                                <span class="small" >Sewa Sekarang</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      
+                        @endforeach
+                    </div>
+                </div>
+            </section>
 
           </div>
        

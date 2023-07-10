@@ -58,7 +58,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control" type="file" name="image_kamera" id="formFile">
+                    <input class="form-control" type="file" name="image_kamera" id="image_kamera">
                   </div>
               </div>
               <div class="card-footer">

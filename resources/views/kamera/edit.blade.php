@@ -6,7 +6,8 @@
     <div class="main-wrapper">
       <div class="main-content">
         <div class="container">
-          <form method="post" action= "{{ route('kamera.update' , $data->id_kamera) }}" >
+          <form method="post" action= "{{ route('kamera.update' , $data->id_kamera) }}" 
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="card mt-5">
@@ -57,9 +58,15 @@
                     <label class="form-label">Type</label>
                     <input type="text" class="form-control" name="type_kamera" value="{{ $data->type_kamera }}"  placeholder="Type kamera">
                   </div>
+                  @if ($data->image_kamera)
+                    <div class="mb-3">
+                        <img style="max-width:100px;max-height:100px" src="{{ url('image_kamera').'/'.$data->image_kamera }}" alt="">
+                    </div>
+                      
+                  @endif
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control" type="file" name="image_kamera" id="formFile">
+                    <input class="form-control" type="file" name="image_kamera" id="image_kamera">
                   </div>
               </div>
               <div class="card-footer">

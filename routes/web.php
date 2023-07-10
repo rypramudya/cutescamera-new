@@ -7,15 +7,7 @@ use App\Http\Controllers\KameraController;
 
 //Route itu berfungsi untuk menjalankan file blade di browser
 
-Route::get('/', function () {
-    return view('landingpage');
-});
-
-Route::get('/katalog', function () {
-    return view('shop-page.shoppage');
-});
-
-
+Route::get('/',[KameraController::class, 'landing'])->name('landing');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
@@ -49,6 +41,9 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dataproduk', [KameraController::class, 'index'])->name('kamera.index');
 
     Route::resource('kamera',KameraController::class);
+    
+    Route::get('katalog',[KameraController::class, 'katalog'])->name('katalog');
+   
     // //untuk menampilkan form ubah password
     // Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');
     // Route::post('/change-password', [LoginController::class, 'updatePassword'])->name('update-password');

@@ -165,9 +165,12 @@ h2,
     }
 }
 
+
+
 h3,
 .h3 {
     font-size: calc(1.3rem + 0.6vw);
+    font-size: 25px;
 }
 @media (min-width: 1200px) {
     h3,

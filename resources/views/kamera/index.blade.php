@@ -49,7 +49,9 @@
                   @forelse ($data as $item)
                     <tr>
 
-                      <td>{{ $item->image_kamera }}</td>
+                      <td>
+                        <img style="max-width:100px;max-height:100px" src="{{ url('image_kamera').'/'.$item->image_kamera }}" alt="">
+                      </td>
                       <td>{{ $item->id_kamera }}</td>
                       <td>{{ $item->nama_kamera }}</td>
                       <td>{{ $item->keterangan }}</td>
