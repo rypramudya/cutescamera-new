@@ -77,7 +77,8 @@ class KameraController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Kamera::where('id_kamera', '=', $id)->get()->first();
+        return view('kamera.show')->with('data', $data);
     }
 
     /**

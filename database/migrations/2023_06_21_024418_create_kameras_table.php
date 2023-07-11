@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('keterangan');
             $table->integer('harga_sewa')->default(0);
             $table->integer('stok_kamera')->default(0);
-            $table->string('type_kamera');
+            $table->enum('type_kamera',['Mirrorless','DSLR']);
             $table->string('image_kamera')->nullable();
             $table->timestamps();
         });

@@ -11,12 +11,15 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tabel_peminjaman', function (Blueprint $table) {
-            $table->id('id_pinjam');
-            $table->string('id_kamera');
-            $table->string('nama_penyewa');
-            $table->integer('harga_sewa')->default(0);
+            $table->uuid('id_pinjam')->primary();
+            $table->integer('total_harga')->default(0);
+            $table->string('bukti_bayar');
+            $table->enum('status',['Pending','Accept','Denied']);
             $table->timestamps();
         });
+
+
+
         // //relasi ke tabel prodi
         //  Schema::table('tabel_peminjaman', function (Blueprint $table) {
         //     $table->foreign('id_kamera')->references('id')->on('tabel_kamera')->onUpdate('cascade')->onDelete('cascade');

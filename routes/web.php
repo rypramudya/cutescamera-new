@@ -41,7 +41,6 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dataproduk', [KameraController::class, 'index'])->name('kamera.index');
 
     Route::resource('kamera',KameraController::class);
-    
     Route::get('katalog',[KameraController::class, 'katalog'])->name('katalog');
    
     // //untuk menampilkan form ubah password
