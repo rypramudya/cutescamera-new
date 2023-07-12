@@ -34,7 +34,7 @@
                   @endif
                   <div class="mb-3">
                     <label class="form-label">ID</label>
-                    <input type="text" class="form-control" name="id_pinjam" value="{{ old('id_pinjam') }}" placeholder="ID PINJAM">
+                    <input type="text" class="form-control" name="id_pinjam" value="{{ $newIdFormatted }}" readonly placeholder="ID PINJAM">
                   </div>
 
                   <div class="mb-3">
