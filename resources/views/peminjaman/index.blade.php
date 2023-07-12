@@ -57,7 +57,7 @@
                                             <td>{{ $item->total_harga }}</td>
                                             <td>
                                                 <img style="max-width:100px;max-height:100px"
-                                                    src="{{ asset('') }}" alt="">
+                                                    src="{{ asset('bukti_bayar') }}" alt="">
                                             </td>
                                             <td>{{ $item->status }}</td>
                                             <td>
