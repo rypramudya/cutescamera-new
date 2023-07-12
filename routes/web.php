@@ -9,7 +9,7 @@ use App\Http\Controllers\PeminjamanController;
 //Route itu berfungsi untuk menjalankan file blade di browser
 
 Route::get('/',[KameraController::class, 'landing'])->name('landing');
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'login'])->middleware('guest:web')->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
 //untuk menampilkan dan menambahkan data di register
@@ -19,7 +19,7 @@ Route::post('actionregister', [LoginController::class, 'actionregister'])->name(
 
 //Group middleware auth(untuk mengecek apakah user sudah login atau belum)
 Route::middleware('auth')->group(function () {
-    Route::middleware('checkroles:1')->group(function (){
+    Route::middleware('admin')->group(function (){
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get('/data-customer', [AdminController::class, 'tampilCustomer'])->name('tampil-customer');
 
@@ -42,8 +42,13 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dataproduk', [KameraController::class, 'index'])->name('kamera.index');
 
     Route::resource('kamera',KameraController::class);
+<<<<<<< HEAD
+    
+    Route::get('katalog',[KameraController::class, 'katalog'])->middleware('pengguna')->name('katalog');
+=======
     Route::resource('peminjaman',PeminjamanController::class);
     Route::get('katalog',[KameraController::class, 'katalog'])->name('katalog');
+>>>>>>> a1d3326a9f09e9bd717a61f95875e5b18ac5886b
    
     // //untuk menampilkan form ubah password
     // Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');

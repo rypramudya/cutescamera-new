@@ -41,11 +41,11 @@
                                         <td>{{ $item->nohp }}</td>
                                         <td>{{ $item->jenisid }}</td>
                                         <td>
-                                        <img src="{{ asset('storage/images/' . $item->fotoid) }}" alt="Foto Identitas"
+                                        <img src="{{ asset('images/' . $item->fotoid) }}" alt="Foto Identitas"
                                                 width="100" height="50">
                                         </td>
                                         <td>
-                                            <img src="{{ asset('storage/images/' . $item->fotobersamaid) }}"
+                                            <img src="{{ asset('images/' . $item->fotobersamaid) }}"
                                                 alt="Foto Bersama Identitas" width="100" height="50">
                                         </td>
                                         

@@ -25,7 +25,7 @@
                     <a class="navbar-brand fw-bold" href="#page-top" i>
                         <img src="assets/img/cuteslogo.png" width="400" alt="">
                     </a>
-                    <button class="navbar-toggler" type="button" data/landing-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-landing-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
                         <i class="bi-list"></i>
                     </button>
@@ -35,6 +35,23 @@
                             <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Kontak</a></li>
                         </ul>
 
+                        @if(Auth::check() && Auth::user()->role == 1)
+                        <a href="/dashboard">
+                            <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombollogin">
+                                <span class="d-flex align-items-center">
+                                    <span class="small" >Dashboard</span>
+                                </span>
+                            </button>
+                        </a>
+                        @elseif(Auth::check() && Auth::user()->role == 2)
+                        <a href="/katalog">
+                            <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombollogin">
+                                <span class="d-flex align-items-center">
+                                    <span class="small" >Katalog</span>
+                                </span>
+                            </button>
+                        </a>
+                        @else
                         <a href="login">
                             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombollogin">
                                 <span class="d-flex align-items-center">
@@ -42,7 +59,7 @@
                                 </span>
                             </button>
                         </a>
-                    
+                        @endif
                         <a href="register">
                             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 ms-2" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombolregister">
                                 <span class="d-flex align-items-center">
