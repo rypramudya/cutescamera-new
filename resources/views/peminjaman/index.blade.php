@@ -61,7 +61,8 @@
                                             </td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                            </td>
+                                                <a class= "btn btn-primary btn-sm" href="{{ route('peminjaman.edit', [$item->id_pinjam], '/edit') }}">Edit</a>  
+                                            </td> 
                                         </tr>
                                     @empty
                                         <tr>
