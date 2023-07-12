@@ -7,6 +7,7 @@ use App\Models\Kamera;
 use App\Models\Peminjaman;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class PeminjamanController extends Controller
@@ -28,7 +29,13 @@ class PeminjamanController extends Controller
         $us = User::all();
         $cus = DetailPengguna::all();
         $kam = Kamera::all();
-        return view('peminjaman.create', compact('kam','cus','us'));
+        if(Auth::check() && Auth::user()->role == 1){
+
+            return view('peminjaman.create', compact('kam','cus','us'));
+        }
+        else {
+            return view('peminjaman.usercreate', compact('kam','cus','us'));
+        }
     }
 
     /**
