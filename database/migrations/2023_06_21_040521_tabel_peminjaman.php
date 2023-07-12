@@ -12,6 +12,8 @@ return new class extends Migration {
     {
         Schema::create('tabel_peminjaman', function (Blueprint $table) {
             $table->uuid('id_pinjam')->primary();
+            $table->date('mulai_sewa');
+            $table->date('selesai_sewa');
             $table->integer('total_harga')->default(0);
             $table->string('bukti_bayar');
             $table->enum('status',['Pending','Accept','Denied']);
