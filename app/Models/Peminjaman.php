@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Peminjaman extends Model
 {
     use HasFactory;
-    protected $table ='tabel_peminjaman';
+    protected $table = 'tabel_peminjaman';
     protected $fillable = [
         'id_pinjam',
         'kamera_id',
-        'detail_user_id',
+        'user_id',
         'mulai_sewa',
         'selesai_sewa',
         'total_harga',
@@ -23,10 +23,11 @@ class Peminjaman extends Model
 
     public function penyewa(): HasOne
     {
-        return $this->hasOne(DetailPengguna::class, 'id', 'detail_user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
-    public function barang_sewa():HasOne{
+    public function barang_sewa(): HasOne
+    {
         return $this->hasOne(Kamera::class, 'id_kamera', 'kamera_id');
     }
 }

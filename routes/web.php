@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RekapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController; //memanggil file login controller
 use App\Http\Controllers\KameraController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\PeminjamanController;
 
 //Route itu berfungsi untuk menjalankan file blade di browser
 
-Route::get('/',[KameraController::class, 'landing'])->name('landing');
+Route::get('/', [KameraController::class, 'landing'])->name('landing');
 Route::get('/login', [LoginController::class, 'login'])->middleware('guest:web')->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
@@ -19,7 +20,7 @@ Route::post('actionregister', [LoginController::class, 'actionregister'])->name(
 
 //Group middleware auth(untuk mengecek apakah user sudah login atau belum)
 Route::middleware('auth')->group(function () {
-    Route::middleware('admin')->group(function (){
+    Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get('/data-customer', [AdminController::class, 'tampilCustomer'])->name('tampil-customer');
 
@@ -41,11 +42,14 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/dataproduk', [KameraController::class, 'index'])->name('kamera.index');
 
-    Route::resource('kamera',KameraController::class);
-    Route::resource('peminjaman',PeminjamanController::class);
-    Route::get('/usercreate',[PeminjamanController::class, 'create'])->name('nyewa');
-    Route::get('katalog',[KameraController::class, 'katalog'])->name('katalog');
-   
+    Route::resource('kamera', KameraController::class);
+    Route::resource('peminjaman', PeminjamanController::class);
+    Route::get('/usercreate', [PeminjamanController::class, 'create'])->name('nyewa');
+    Route::get('katalog', [KameraController::class, 'katalog'])->name('katalog');
+
+    Route::get('laporan-transaksi', [RekapController::class, 'index'])->name('rekap');
+    Route::post('laporan-transaksi/bulanan', [RekapController::class, 'bulanan'])->name('rekap.bulanan');
+    Route::post('laporan-transaksi/tahunan', [RekapController::class, 'tahunan'])->name('rekap.tahunan');
     // //untuk menampilkan form ubah password
     // Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');
     // Route::post('/change-password', [LoginController::class, 'updatePassword'])->name('update-password');
@@ -54,7 +58,3 @@ Route::middleware('auth')->group(function () {
     Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
     Route::delete('/hapus-customer/{id}', [AdminController::class, 'hapusCustomer'])->name('hapus-customer');
 });
-
-
-
-

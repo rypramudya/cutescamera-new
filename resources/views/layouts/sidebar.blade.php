@@ -62,7 +62,7 @@
                                     <ul class="sidebar-nav" id="sidebar-nav">
                                         <li class="menu-title">Transaksi</li>
                                         <li class="nav-item">
-                                            <a class="nav-link " href="#">
+                                            <a class="nav-link " href="{{ route('rekap') }}">
                                                 <i class="bi bi-book"></i>
                                                 <span>Laporan Transaksi</span>
                                             </a>

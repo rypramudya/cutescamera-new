@@ -46,11 +46,11 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Harga Sewa / Jam</label>
-                    <input type="text" class="form-control" name="harga_sewa" value="{{ old('harga_sewa') }}"  placeholder="Harga sewa kamera perjam">
+                    <input type="number" class="form-control" name="harga_sewa" value="{{ old('harga_sewa') }}"  placeholder="Harga sewa kamera perjam">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Stok</label>
-                    <input type="text" class="form-control" name="stok_kamera" value="{{ old('stok_kamera') }}"  placeholder="Stock">
+                    <input type="number" class="form-control" name="stok_kamera" value="{{ old('stok_kamera') }}"  placeholder="Stock">
                   </div>
                   <div class=" form-group">
                     <label for="type_kamera" class="form-label" >Type</label>

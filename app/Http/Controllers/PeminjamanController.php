@@ -27,15 +27,9 @@ class PeminjamanController extends Controller
     public function create()
     {
         $us = User::all();
-        $cus = DetailPengguna::all();
+        $cus = User::where('role', 2)->get();
         $kam = Kamera::all();
-        if(Auth::check() && Auth::user()->role == 1){
-
-            return view('peminjaman.create', compact('kam','cus','us'));
-        }
-        else {
-            return view('peminjaman.usercreate', compact('kam','cus','us'));
-        }
+        return view('peminjaman.create', compact('kam', 'cus', 'us'));
     }
 
     /**
@@ -44,31 +38,31 @@ class PeminjamanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_pinjam'=>'required',
-            'user_id'=>'required',
-            'kamera_id'=>'required',
-            'mulai_sewa'=>'required',
-            'selesai_sewa'=>'required',
-            'total_harga'=>'required',
-            'bukti_bayar'=>'image|mimes:jpeg,png,jpg|max:2048',
+            'id_pinjam' => 'required',
+            'user_id' => 'required',
+            'kamera_id' => 'required',
+            'mulai_sewa' => 'required',
+            'selesai_sewa' => 'required',
+            'total_harga' => 'required',
+            'bukti_bayar' => 'image|mimes:jpeg,png,jpg|max:2048',
             'status',
 
         ]);
 
         $image_file = $request->file('bukti_bayar');
         $image_ekstensi = $image_file->extension();
-        $image_nama = date('ymdhis') .".". $image_ekstensi;
+        $image_nama = date('ymdhis') . "." . $image_ekstensi;
         $image_file->move(public_path('bukti_bayar'), $image_nama);
 
         $data = [
-            'id_pinjam'=>$request->input('id_pinjam'),
-            'detail_user_id'=>$request->input('user_id'),
-            'kamera_id'=>$request->input('kamera_id'),
-            'mulai_sewa'=>$request->input('mulai_sewa'),
-            'selesai_sewa'=>$request->input('selesai_sewa'),
-            'total_harga'=>$request->input('total_harga'),
-            'bukti_bayar'=>$image_nama,
-            'status'=> 'Pending',
+            'id_pinjam' => $request->input('id_pinjam'),
+            'user_id' => $request->input('user_id'),
+            'kamera_id' => $request->input('kamera_id'),
+            'mulai_sewa' => $request->input('mulai_sewa'),
+            'selesai_sewa' => $request->input('selesai_sewa'),
+            'total_harga' => $request->input('total_harga'),
+            'bukti_bayar' => $image_nama,
+            'status' => 'Pending',
         ];
         Peminjaman::create($data);
         return redirect('/peminjaman');

@@ -50,7 +50,7 @@
                                         <tr>
 
                                             <td>{{ $item->id_pinjam }}</td>
-                                            <td>{{ $item->penyewa->user->nama }}</td>
+                                            <td>{{ $item->penyewa->nama }}</td>
                                             <td>{{ $item->barang_sewa->nama_kamera }}</td>
                                             <td>{{ $item->mulai_sewa }}</td>
                                             <td>{{ $item->selesai_sewa }}</td>

@@ -40,9 +40,9 @@
                   <div class="mb-3">
                     <label class="form-label">Nama Peminjam</label>
                     <select class="form-control select" name="user_id" id="user_id">
-                        <option disabled value> Nama Peminjam </option>
+                        <option disabled value selected> Pilih Nama Peminjam </option>
                         @foreach ($cus as $c)
-                            <option value="{{ $c->id }}"> {{$c->user->nama}}  </option>
+                            <option value="{{ $c->id }}"> {{$c->nama}}  </option>
                         @endforeach
                         
                     </select>
@@ -51,7 +51,7 @@
                   <div class="mb-3">
                     <label class="form-label">Nama Kamera</label>
                     <select class="form-control select" name="kamera_id" id="kamera_id">
-                        <option disabled value> Pilih Kamera </option>
+                        <option disabled value selected> Pilih Kamera </option>
                         @foreach ($kam as $item)
                             <option value="{{ $item->id_kamera}}"> {{$item->nama_kamera}}  </option>
                         @endforeach
@@ -62,13 +62,13 @@
                   <div class="formbold-mb-3">
                         <label for="mulai_sewa" class="formbold-form-label">Mulai</label>
                         <input type="date" name="mulai_sewa" id="mulai_sewa"
-                            class="formbold-form-input" value="{{ old('mulai_sewa') }}" />
+                            class="formbold-form-input form-control" value="{{ old('mulai_sewa') }}" />
                   </div>
                   <br>
                   <div class="formbold-mb-3">
                         <label for="selesai_sewa" class="formbold-form-label">Selesai</label>
                         <input type="date" name="selesai_sewa" id="selesai_sewa"
-                            class="formbold-form-input" value="{{ old('selesai_sewa') }}" />
+                            class="formbold-form-input form-control" value="{{ old('selesai_sewa') }}" />
                   </div>
                   <br>
                   <div class="mb-3">
