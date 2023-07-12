@@ -27,6 +27,6 @@ class Peminjaman extends Model
     }
 
     public function barang_sewa():HasOne{
-        return $this->hasOne(Kamera::class, 'id_kamera', 'id_kamera');
+        return $this->hasOne(Kamera::class, 'id_kamera', 'kamera_id');
     }
 }
