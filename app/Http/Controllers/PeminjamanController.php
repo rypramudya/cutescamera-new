@@ -88,7 +88,8 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Peminjaman::where('id_pinjam', '=', $id)->get()->first();
+        return view('peminjaman.edit')->with('data', $data);
     }
 
     /**
