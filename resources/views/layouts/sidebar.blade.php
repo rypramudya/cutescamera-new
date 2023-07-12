@@ -43,7 +43,7 @@
                     <ul class="sidebar-nav" id="sidebar-nav">
                         <li class="menu-title">Transaksi</li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">
+                            <a class="nav-link " href= " {{ route('peminjaman.index') }} " >
                                 <i class="bi bi-arrow-down-circle"></i>
                                 <span>Peminjaman</span>
                             </a>
@@ -66,7 +66,7 @@
                                 <ul class="sidebar-nav" id="sidebar-nav">
                                     <li class="menu-title">Produk</li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="{{ route('kamera.index') }}">
+                                        <a class="nav-link " href=" {{ route('kamera.index') }} ">
                                             <i class="bi bi-table"></i>
                                             <span>Data Produk</span>
                                         </a>

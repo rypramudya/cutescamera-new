@@ -103,11 +103,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-primary rounded-pill  mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombollogin">
-                                        <span class="d-flex align-items-center">
-                                            <span class="small" >Sewa Sekarang</span>
-                                        </span>
-                                    </a>
+                                    <a class= "btn btn-primary btn-sm" href="{{ route('kamera.show', [$item->id_kamera], '/show') }}">Sewa Sekarang</a>
                                 </div>
                             </div>
                         </div>

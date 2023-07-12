@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController; //memanggil file login controller
 use App\Http\Controllers\KameraController;
+use App\Http\Controllers\PeminjamanController;
 
 //Route itu berfungsi untuk menjalankan file blade di browser
 
@@ -41,8 +42,13 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dataproduk', [KameraController::class, 'index'])->name('kamera.index');
 
     Route::resource('kamera',KameraController::class);
+<<<<<<< HEAD
     
     Route::get('katalog',[KameraController::class, 'katalog'])->middleware('pengguna')->name('katalog');
+=======
+    Route::resource('peminjaman',PeminjamanController::class);
+    Route::get('katalog',[KameraController::class, 'katalog'])->name('katalog');
+>>>>>>> a1d3326a9f09e9bd717a61f95875e5b18ac5886b
    
     // //untuk menampilkan form ubah password
     // Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');

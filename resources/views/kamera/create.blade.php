@@ -52,10 +52,15 @@
                     <label class="form-label">Stok</label>
                     <input type="text" class="form-control" name="stok_kamera" value="{{ old('stok_kamera') }}"  placeholder="Stock">
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Type</label>
-                    <input type="text" class="form-control" name="type_kamera" value="{{ old('type_kamera') }}"  placeholder="Type kamera">
-                  </div>
+                  <div class=" form-group">
+                    <label for="type_kamera" class="form-label" >Type</label>
+                    <select class="form-control" style="background-color: rgba(250, 247, 247, 0.993);   color: black;" id="type_kamera" name="type_kamera"
+                        value="{{ Session::get('type_kamera') }}">
+                        <option selected disabled value>Pilih Type Kamera</option>
+                        <option value="Mirrorless">Mirrorless</option>
+                        <option value="DSLR">DSLR</option>
+                    </select>
+                </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Image</label>
                     <input class="form-control" type="file" name="image_kamera" id="image_kamera">
