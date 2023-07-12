@@ -51,10 +51,10 @@
                             </button>
                         </a>
                         @elseif(Auth::check() && Auth::user()->role == 2)
-                        <a href="/katalog">
+                        <a href="actionlogout">
                             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal" id="tombollogin">
                                 <span class="d-flex align-items-center">
-                                    <span class="small" >Katalog</span>
+                                    <span class="small" >Logout</span>
                                 </span>
                             </button>
                         </a>
