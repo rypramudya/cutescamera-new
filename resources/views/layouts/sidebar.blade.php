@@ -49,19 +49,6 @@
                             </a>
                         </li>
                         <ul class="sidebar-nav" id="sidebar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">
-                                    <i class="bi bi-arrow-up-circle"></i>
-                                    <span>Pengembalian</span>
-                                </a>
-                            </li>
-                            <ul class="sidebar-nav" id="sidebar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link " href="#">
-                                        <i class="bi bi-arrow-clockwise"></i>
-                                        <span>Riwayat Transaksi</span>
-                                    </a>
-                                </li>
                                 <hr class="sidebar-divider">
                                 <ul class="sidebar-nav" id="sidebar-nav">
                                     <li class="menu-title">Produk</li>
