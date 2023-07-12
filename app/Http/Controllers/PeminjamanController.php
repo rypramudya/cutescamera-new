@@ -33,6 +33,7 @@ class PeminjamanController extends Controller
         $us = User::all();
         $cus = DetailPengguna::all();
         $kam = Kamera::all();
+        
         if(Auth::check() && Auth::user()->role == 1){
 
             return view('peminjaman.create', compact('kam','cus','us','newIdFormatted'));
