@@ -17,7 +17,7 @@ class AdminController extends Controller
 
      //fungsi tampil customer
     public function tampilCustomer(){
-        $data = User::join('detail_penggunas', 'users.id','=','detail_penggunas.user_id')->select('users.nama', 'users.email', 'users.id', 'detail_penggunas.user_id', 'detail_penggunas.nik','detail_penggunas.nohp','detail_penggunas.alamat','detail_penggunas.fotobersamaid','detail_penggunas.jenisid')->get();
+        $data = User::join('detail_penggunas', 'users.id','=','detail_penggunas.user_id')->select('users.nama', 'users.email', 'users.id', 'detail_penggunas.user_id', 'detail_penggunas.nik','detail_penggunas.nohp','detail_penggunas.alamat','detail_penggunas.fotoid','detail_penggunas.fotobersamaid','detail_penggunas.jenisid')->get();
         return view('customer.data-customer', compact('data'));
     }
 

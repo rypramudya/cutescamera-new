@@ -15,11 +15,8 @@ class LoginController extends Controller
 {
     public function login()
     {
-        if (Auth::check()) {
-            return view('dashboard');
-        } else {
-            return view('login');
-        }
+        
+       return view('login');
     }
 
     public function actionlogin(Request $request)
@@ -114,13 +111,13 @@ class LoginController extends Controller
         if ($request->hasFile('fotoid')) {
             $file = $request->file('fotoid');
             $fileName =
-                $request['nama'] .
+                'identitas'. $request['nama'] . //Ubah penamaan file
                 Carbon::now()
                     ->locale('id')
                     ->translatedFormat('dHis') .
                 '.' .
                 $file->getClientOriginalExtension();
-            $imagePath = $file->storeAs('public/images', $fileName); // simpan gambar di folder storage/app/public/images
+            $imagePath = $file->move(public_path('images'), $fileName); // simpan gambar di folder storage/app/public/images
         }
         $detailPengguna->fotoid = basename($imagePath);
 
@@ -132,7 +129,7 @@ class LoginController extends Controller
                     ->locale('id')
                     ->translatedFormat('dHis') .
                 $file->getClientOriginalExtension(); //fungsi carbon untuk memanipulasi tanggal/jam
-            $filePathid = $file->storeAs('public/images', $fileName); // simpan gambar di folder storage/app/public/images
+            $filePathid = $file->move(public_path('images'), $fileName); // simpan gambar di folder storage/app/public/images
         }
         $detailPengguna->fotobersamaid = basename($filePathid);
         $detailPengguna->save();
