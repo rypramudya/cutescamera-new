@@ -38,22 +38,22 @@
                   </div>
 
                   <div class="mb-3">
-                    <label class="form-label">Id Peminjam</label>
+                    <label class="form-label">Nama Peminjam</label>
                     <select class="form-control select" name="user_id" id="user_id">
                         <option disabled value> Nama Peminjam </option>
                         @foreach ($cus as $c)
-                            <option value="{{ $c->user->id }}"> {{$c->user->id}}  </option>
+                            <option value="{{ $c->id }}"> {{$c->user->nama}}  </option>
                         @endforeach
                         
                     </select>
                   </div>
 
                   <div class="mb-3">
-                    <label class="form-label">Id Kamera</label>
-                    <select class="form-control select" name="id_kamera" id="id_kamera">
+                    <label class="form-label">Nama Kamera</label>
+                    <select class="form-control select" name="kamera_id" id="kamera_id">
                         <option disabled value> Pilih Kamera </option>
                         @foreach ($kam as $item)
-                            <option value="{{ $item->id_kamera}}"> {{$item->id_kamera}}  </option>
+                            <option value="{{ $item->id_kamera}}"> {{$item->nama_kamera}}  </option>
                         @endforeach
 
                     </select>

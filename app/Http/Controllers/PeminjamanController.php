@@ -16,8 +16,8 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $data = Peminjaman::with('penyewa','barang_sewa');
-        return view('peminjaman.index')->with('data',$data);
+        $data = Peminjaman::all();
+        return view('peminjaman.index', compact('data'));
     }
 
     /**
@@ -39,7 +39,7 @@ class PeminjamanController extends Controller
         $request->validate([
             'id_pinjam'=>'required',
             'user_id'=>'required',
-            'id_kamera'=>'required',
+            'kamera_id'=>'required',
             'mulai_sewa'=>'required',
             'selesai_sewa'=>'required',
             'total_harga'=>'required',
@@ -55,13 +55,13 @@ class PeminjamanController extends Controller
 
         $data = [
             'id_pinjam'=>$request->input('id_pinjam'),
-            'detail_user_id'=>$request->input('nama'),
-            'kamera_id'=>$request->input('nama_kamera'),
+            'detail_user_id'=>$request->input('user_id'),
+            'kamera_id'=>$request->input('kamera_id'),
             'mulai_sewa'=>$request->input('mulai_sewa'),
             'selesai_sewa'=>$request->input('selesai_sewa'),
             'total_harga'=>$request->input('total_harga'),
             'bukti_bayar'=>$image_nama,
-            'status'=>$request->input('Pending'),
+            'status'=> 'Pending',
         ];
         Peminjaman::create($data);
         return redirect('/peminjaman');
