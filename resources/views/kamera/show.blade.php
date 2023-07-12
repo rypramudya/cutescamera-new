@@ -43,8 +43,9 @@
                     <br>
                     <h4>Keterangan</h4>
                     <h2>{{$data->keterangan}}</h2>
+                    
                     <div class="d-flex flex-column flex-lg-row align-items-center">
-                        <a href="katalog">
+                        <a href="{{ route('nyewa') }}">
                             <button type="button" class="btn btn-primary btn-lg btnsewa" id="buttonsewa">Sewa Sekarang</button>
                         </a>
                     </div>

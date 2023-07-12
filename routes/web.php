@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('kamera',KameraController::class);
     Route::resource('peminjaman',PeminjamanController::class);
+    Route::get('/usercreate',[PeminjamanController::class, 'create'])->name('nyewa');
     Route::get('katalog',[KameraController::class, 'katalog'])->name('katalog');
    
     // //untuk menampilkan form ubah password
