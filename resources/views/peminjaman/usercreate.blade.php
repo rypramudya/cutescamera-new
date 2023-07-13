@@ -69,7 +69,8 @@
                         <select class="form-control select" name="user_id" id="user_id">
                             <option disabled value> Nama Peminjam </option>
                             @foreach ($cus as $c)
-                                <option value="{{ $c->id }}"> {{$c->user->nama}}  </option>
+                            
+                                <option value="{{ $c->id }}"> {{ Auth::user()->nama }}  </option>
                             @endforeach
                             
                         </select>

@@ -8,6 +8,7 @@ use App\Models\Peminjaman;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Facade;
 use Symfony\Component\Console\Input\Input;
 
 class PeminjamanController extends Controller
@@ -26,10 +27,20 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
+        $idPeminjaman = Peminjaman::orderBy('id_pinjam', 'DESC')->first();
+        $newId = $idPeminjaman ? (int) substr($idPeminjaman->id_pinjam, 1) + 1 : 1;
+        $newIdFormatted = 'P' . str_pad($newId, 3, '0', STR_PAD_LEFT);
         $us = User::all();
         $cus = User::where('role', 2)->get();
         $kam = Kamera::all();
-        return view('peminjaman.create', compact('kam', 'cus', 'us'));
+        
+        if(Auth::check() && Auth::user()->role == 1){
+
+            return view('peminjaman.create', compact('kam','cus','us','newIdFormatted'));
+        }
+        else {
+            return view('peminjaman.usercreate', compact('kam','cus','us','newIdFormatted'));
+        }
     }
 
     /**
@@ -81,7 +92,8 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Peminjaman::where('id_pinjam', '=', $id)->get()->first();
+        return view('peminjaman.edit')->with('data', $data);
     }
 
     /**
@@ -89,7 +101,53 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_pinjam'=>'required',
+            'user_id'=>'required',
+            'kamera_id'=>'required',
+            'mulai_sewa'=>'required',
+            'selesai_sewa'=>'required',
+            'total_harga'=>'required',
+            'bukti_bayar'=>'image|mimes:jpeg,png,jpg|max:2048',
+            'status'=>'required'
+
+        ]);
+        
+        
+        $data = [
+            'id_pinjam'=>$request->input('id_pinjam'),
+            'detail_user_id'=>$request->input('user_id'),
+            'kamera_id'=>$request->input('kamera_id'),
+            'mulai_sewa'=>$request->input('mulai_sewa'),
+            'selesai_sewa'=>$request->input('selesai_sewa'),
+            'total_harga'=>$request->input('total_harga'),
+            'status'=> $request->input('total_harga'),
+        ];
+
+        if ($request->hasFile('bukti_bayar')) {
+            $request->validate([
+                'bukti_bayar'=> 'image|mimes:jpeg,png,jpg|max:2048'
+            ]);
+
+            $image_file = $request->file('bukti_bayar');
+            $image_ekstensi = $image_file->extension();
+            $image_nama = date('ymdhis') .".". $image_ekstensi;
+            $image_file->move(public_path('bukti_bayar'), $image_nama);
+
+            $data_image = Kamera::where('id_pinjam', $id)->first();
+            Facade::delete(public_path('bukti_bayar').'/'.$data_image->bukti_bayar);
+
+            $data = [
+                'bukti_bayar' => $image_nama
+            ];
+           
+
+        }
+
+        
+        Peminjaman::where('id_pinjam', $id)->update($data);
+        // return redirect('/peminjaman')->with('success','Berhasil Update data');
+        return redirect()->back();
     }
 
     /**
