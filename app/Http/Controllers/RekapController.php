@@ -21,7 +21,7 @@ class RekapController extends Controller
         $nama_bulan = Carbon::parse($bulan)->locale('id')->translatedFormat('F');
         // dd($nama_bulan);
         $data = Peminjaman::join('tabel_kamera', 'tabel_kamera.id_kamera', '=', 'tabel_peminjaman.kamera_id')
-            ->join('users', 'users.id', '=', 'tabel_peminjaman.user_id')
+            ->join('users', 'users.id', '=', 'tabel_peminjaman.detail_user_id')
             ->select('tabel_peminjaman.*', 'tabel_kamera.nama_kamera', 'users.nama', \DB::raw('DATEDIFF(tabel_peminjaman.selesai_sewa, tabel_peminjaman.mulai_sewa) AS jumlah_hari'))
             ->whereMonth('tabel_peminjaman.mulai_sewa', $ubahformat)
             ->get();
@@ -39,7 +39,7 @@ class RekapController extends Controller
         $tahun = $request->tahun;
         // dd($tahun);
         $data = Peminjaman::join('tabel_kamera', 'tabel_kamera.id_kamera', '=', 'tabel_peminjaman.kamera_id')
-            ->join('users', 'users.id', '=', 'tabel_peminjaman.user_id')
+            ->join('users', 'users.id', '=', 'tabel_peminjaman.detail_user_id')
             ->select('tabel_peminjaman.*', 'tabel_kamera.nama_kamera', 'users.nama', \DB::raw('DATEDIFF(tabel_peminjaman.selesai_sewa, tabel_peminjaman.mulai_sewa) AS jumlah_hari'))
             ->whereYear('tabel_peminjaman.mulai_sewa', $tahun)
             ->get();

@@ -23,7 +23,7 @@ class Peminjaman extends Model
 
     public function penyewa(): HasOne
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'detail_user_id');
     }
 
     public function barang_sewa(): HasOne
