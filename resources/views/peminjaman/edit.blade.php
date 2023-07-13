@@ -76,10 +76,7 @@
                     </div>
                       
                   @endif
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control" type="file" name="bukti_bayar" id="bukti_bayar">
-                  </div>
+            
                 
                   <div class=" form-group">
                     <label for="status" class="form-label" >Status</label>
