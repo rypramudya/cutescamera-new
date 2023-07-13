@@ -27,15 +27,19 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
+        $idPeminjaman = Peminjaman::orderBy('id_pinjam', 'DESC')->first();
+        $newId = $idPeminjaman ? (int) substr($idPeminjaman->id_pinjam, 1) + 1 : 1;
+        $newIdFormatted = 'P' . str_pad($newId, 3, '0', STR_PAD_LEFT);
         $us = User::all();
         $cus = DetailPengguna::all();
         $kam = Kamera::all();
+        
         if(Auth::check() && Auth::user()->role == 1){
 
-            return view('peminjaman.create', compact('kam','cus','us'));
+            return view('peminjaman.create', compact('kam','cus','us','newIdFormatted'));
         }
         else {
-            return view('peminjaman.usercreate', compact('kam','cus','us'));
+            return view('peminjaman.usercreate', compact('kam','cus','us','newIdFormatted'));
         }
     }
 

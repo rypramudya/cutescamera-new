@@ -35,7 +35,10 @@ class KameraController extends Controller
      */
     public function create()
     {
-        return view('kamera.create');
+        $idKamera = Kamera::orderBy('id_kamera', 'DESC')->first();
+        $newId = $idKamera ? (int) substr($idKamera->id_kamera, 1) + 1 : 1;
+        $newIdFormatted = 'C' . str_pad($newId, 3, '0', STR_PAD_LEFT);
+        return view('kamera.create', compact('newIdFormatted'));
     }
 
     /**
