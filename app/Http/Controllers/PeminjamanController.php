@@ -57,7 +57,6 @@ class PeminjamanController extends Controller
             'total_harga' => 'required',
             'bukti_bayar' => 'image|mimes:jpeg,png,jpg|max:2048',
             'status',
-
         ]);
 
         $image_file = $request->file('bukti_bayar');
